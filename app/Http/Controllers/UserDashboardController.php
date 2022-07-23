@@ -23,6 +23,7 @@ class UserDashboardController extends Controller
             $this->param['getCountPengirimanBarangAcc'] = Send::where('status', 'disetujui')->where('id_user', \Auth::user()->id)->count();
             $this->param['getCountPengirimanBarangPending'] = Send::where('status', 'dalam antrian')->where('id_user', \Auth::user()->id)->count();
             $this->param['getCountPengirimanBarangDecline'] = Send::where('status', 'ditolak')->where('id_user', \Auth::user()->id)->count();
+            $this->param['getSend'] = Send::where('status', 'dalam antrian')->get();
 
             return view('user.pages.dashboard.dashboard', $this->param);
         } catch (\Exception $e) {

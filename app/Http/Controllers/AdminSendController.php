@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Send;
+use App\Models\UserDetails;
 use Illuminate\Http\Request;
 
 class AdminSendController extends Controller
@@ -85,6 +86,9 @@ class AdminSendController extends Controller
     {
         try {
             $this->param['getDetailSend'] = Send::find($send->id);
+            // $this->param['getNIKSender'] = User::where('id' , $send->id_user)->get();
+            $this->param['getNIKSender'] = UserDetails::where('user_id' , $send->id_user)->get();
+            // $this->param['getNIKSender'] = UserDetails::find($send->id);
             return view('admin.pages.send.approve-pengiriman-barang', $this->param);
         } catch(\Throwable $e){
             return redirect()->back()->withError($e->getMessage());

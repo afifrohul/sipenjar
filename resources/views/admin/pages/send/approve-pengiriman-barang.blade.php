@@ -11,7 +11,12 @@
                 @csrf
                 <div>
                     <label class="text-gray-700 ml-1">Nama Pengirim : </label>
+                    {{-- <p class="ml-1 text-base">{{ $getDetailSend->user->name }}</p> --}}
                     <p class="ml-1 text-base">{{ $getDetailSend->user->name }}</p>
+                </div>
+                <div class="mt-3">
+                    <label class="text-gray-700 ml-1">NIK Pengirim : </label>
+                    <p class="ml-1 text-base">{{ $getNIKSender[0]->nik }}</p>
                 </div>
                 <div class="mt-3">
                     <label class="text-gray-700 ml-1">Tujuan Tahanan : </label>
@@ -22,9 +27,9 @@
                 </div>
                 <div class="mt-3">
                     <label class="text-gray-700 ml-1">Sesi : </label>
-                    @if ($item->session == 1)
+                    @if ($getDetailSend->session == 1)
                     <p class="ml-1 text-base">09.00 - 10.00</p>
-                    @elseif($item->session == 2)
+                    @elseif($getDetailSend->session == 2)
                     <p class="ml-1 text-base">10.00 - 11.00</p>
                     @endif
                 </div>

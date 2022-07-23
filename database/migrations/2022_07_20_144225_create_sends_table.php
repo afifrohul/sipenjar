@@ -19,7 +19,7 @@ class CreateSendsTable extends Migration
             $table->foreignId('id_prisoner');
             $table->date('date');
             $table->enum('session', [1, 2]);
-            $table->enum('type', ['makanan', 'pakaian', 'lainnya']);
+            $table->enum('type', ['makanan', 'pakaian', 'minuman']);
             $table->text('desc');
             $table->enum('status', ['disetujui', 'ditolak', 'dalam antrian']);
             $table->timestamps();

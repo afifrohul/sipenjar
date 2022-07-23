@@ -20,7 +20,7 @@ class PrisonerSeeder extends Seeder
             'nik' => '350920202308090002',
             'birth_date' => '1990-12-12',
             'country' => 'Jember',
-            'photo' => 'asasjejjje',
+            'photo' => 'default.png',
             'room' => 'B-12',
             'created_at' => now(),
             'updated_at' => now()
@@ -31,7 +31,7 @@ class PrisonerSeeder extends Seeder
             'nik' => '350920202308090003',
             'birth_date' => '1990-12-12',
             'country' => 'Jember',
-            'photo' => 'asasjejjje',
+            'photo' => 'default.png',
             'room' => 'B-12',
             'created_at' => now(),
             'updated_at' => now()
@@ -42,7 +42,7 @@ class PrisonerSeeder extends Seeder
             'nik' => '350920202308090001',
             'birth_date' => '1990-12-12',
             'country' => 'Jember',
-            'photo' => 'asasjejjje',
+            'photo' => 'default.png',
             'room' => 'B-12',
             'created_at' => now(),
             'updated_at' => now()

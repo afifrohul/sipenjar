@@ -112,8 +112,8 @@
                     <label class="text-gray-700 ml-1">Tipe Barang : </label>
                     <select name="type" class="form-input mt-1 p-3 border-2 @error('tag') border-red-500 @enderror focus:outline-none focus:border-teal-500 form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0">
                         <option value="makanan">Makanan</option>
+                        <option value="minuman">Minuman</option>
                         <option value="pakaian">Pakaian</option>
-                        <option value="lainnya">Lainnya</option>
                     </select>
                     @error('type')
                     <span class="pl-1 text-xs text-red-600 text-bold">
