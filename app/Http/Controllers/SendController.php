@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Send;
+use App\Models\UserDetails;
 use App\Models\Prisoner;
 use Carbon\Carbon;
 class SendController extends Controller
@@ -96,10 +97,11 @@ class SendController extends Controller
             $send->desc1 = $request->desc1;
             // $send->type3 = $request->type3;
             // $send->desc3 = $request->desc3;
-            if ($request->type2) {
+            if ($request->type2 != null) {
                 $send->type2 = $request->type2;
                 $send->desc2 = $request->desc2;
-            } elseif ($request->type3) {
+            } 
+            if ($request->type3 != null) {
                 $send->type3 = $request->type3;
                 $send->desc3 = $request->desc3;
 
@@ -124,7 +126,17 @@ class SendController extends Controller
      */
     public function show(Send $send)
     {
-        //
+        try {
+            $this->param['getDetailSend'] = Send::find($send->id);
+            // $this->param['getNIKSender'] = User::where('id' , $send->id_user)->get();
+            $this->param['getNIKSender'] = UserDetails::where('user_id' , $send->id_user)->get();
+            // $this->param['getNIKSender'] = UserDetails::find($send->id);
+            return view('user.pages.send.detail-pengiriman-barang', $this->param);
+        } catch(\Throwable $e){
+            return redirect()->back()->withError($e->getMessage());
+        } catch(\Illuminate\Database\QueryException $e){
+            return redirect()->back()->withError($e->getMessage());
+        }
     }
 
     /**

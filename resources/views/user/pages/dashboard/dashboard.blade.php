@@ -70,7 +70,7 @@
                 </div>
             </div>
             <div class="mx-4">
-                <h1 class="font-bold leading-5 font-medium capitalize  text-gray-700    ">
+                <h1 class="font-bold leading-5 capitalize  text-gray-700    ">
                     Jangan lupa untuk pergi ke lokasi pengiriman barang dengan rincian sebagai berikut :
                 </h1>
                 <p class="text-gray-600">Tanggal :</p>

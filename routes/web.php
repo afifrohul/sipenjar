@@ -32,6 +32,7 @@ Route::get('/back-user/back-dashboard', [UserDashboardController::class, 'index'
 
 //pengiriman barang
 Route::get('/back-user/riwayat-pengiriman-barang', [SendController::class, 'index']);
+Route::post('/back-user/riwayat-pengiriman-barang/show/{send}', [SendController::class, 'show']);
 Route::get('/back-user/pengiriman-barang', [SendController::class, 'create']);
 Route::post('/back-user/pengiriman-barang/store', [SendController::class, 'store']);
 

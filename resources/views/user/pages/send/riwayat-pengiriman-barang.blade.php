@@ -34,6 +34,9 @@
                             <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Status
                             </th>
+                            <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Opsi
+                            </th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
@@ -77,6 +80,14 @@
                                     {{$item->status}}
                                 </div>
                                 @endif
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-center">
+                                <div>
+                                    <form action="{{url('/back-user/riwayat-pengiriman-barang/show',$item->id)}}" method="POST" class="inline">
+                                        @csrf
+                                        <button type="submit" class="bg-yellow-500 h-10 w-10 rounded hover:bg-yellow-600"><i class="fa fa-eye text-white"></i></button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                         @endforeach
