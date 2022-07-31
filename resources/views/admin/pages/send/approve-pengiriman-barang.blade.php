@@ -17,6 +17,9 @@
                 <div class="mt-3">
                     <label class="text-gray-700 ml-1">NIK Pengirim : </label>
                     <p class="ml-1 text-base">{{ $getNIKSender[0]->nik }}</p>
+                    <div class="text-sm text-gray-900">
+                        <img class="h-64 object-cover m-auto ml-1" src="{{asset('assets/upload/ktp/')}}/{{$getNIKSender[0]->ktp_photo}}">
+                    </div>
                 </div>
                 <div class="mt-3">
                     <label class="text-gray-700 ml-1">Tujuan Tahanan : </label>
@@ -34,12 +37,41 @@
                     @endif
                 </div>
                 <div class="mt-3">
-                    <label class="text-gray-700 ml-1">Tipe Barang : </label>
-                    <p class="ml-1 text-base">{{ $getDetailSend->type }}</p>
+                    <label class="text-gray-700 ml-1">Tipe Barang 1 : </label>
+                    <p class="ml-1 text-base">{{ $getDetailSend->type1 }}</p>
                 </div>
                 <div class="mt-3">
-                    <label class="text-gray-700 ml-1">Deskripsi Barang : </label>
-                    <p class="ml-1 text-base">{{ $getDetailSend->desc }}</p>
+                    <label class="text-gray-700 ml-1">Deskripsi Barang 1 : </label>
+                    <p class="ml-1 text-base">{{ $getDetailSend->desc1 }}</p>
+                </div>
+                @if ($getDetailSend->type2)  
+                <div class="mt-3">
+                    <label class="text-gray-700 ml-1">Tipe Barang 2 : </label>
+                    <p class="ml-1 text-base">{{ $getDetailSend->type2 }}</p>
+                </div>
+                <div class="mt-3">
+                    <label class="text-gray-700 ml-1">Deskripsi Barang 2 : </label>
+                    <p class="ml-1 text-base">{{ $getDetailSend->desc2 }}</p>
+                </div>
+                @endif
+                @if ($getDetailSend->type3)
+                <div class="mt-3">
+                  <label class="text-gray-700 ml-1">Tipe Barang 3 : </label>
+                  <p class="ml-1 text-base">{{ $getDetailSend->type3 }}</p>
+                </div>
+                <div class="mt-3">
+                  <label class="text-gray-700 ml-1">Deskripsi Barang 3 : </label>
+                  <p class="ml-1 text-base">{{ $getDetailSend->desc3 }}</p>
+                </div>
+                @endif
+                <div>
+                    <label class="text-gray-700 ml-1">Catatan : </label>
+                    <input type="text" name="admin_note" class="form-input w-full block rounded mt-1 p-3 border-2 @error('admin_note') border-red-500 @enderror focus:outline-none focus:border-teal-500" placeholder="" value="{{old('admin_note')}}">
+                    @error('admin_note')
+                    <span class="pl-1 text-xs text-red-600 text-bold">
+                        {{$message}}
+                    </span>
+                    @enderror
                 </div>
                 <div class="mt-3">
                     <label class="text-gray-700 ml-1">Status : </label>

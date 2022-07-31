@@ -82,7 +82,9 @@
                 <p class="text-gray-600">10.00 - 11.00</p>
                 @endif
                 <p class="text-gray-600">Tipe Barang :</p>
-                <p class="text-gray-600">{{ $item->type }}</p>
+                <p class="text-gray-600">{{ $item->type1 }}</p>
+                <p class="text-gray-600">{{ $item->type2 }}</p>
+                <p class="text-gray-600">{{ $item->type3 }}</p>
             </div>
         </div>
     </div>

@@ -7,7 +7,7 @@
         </div>
 
         <p class="uppercase text-xs text-gray-600 mb-4 tracking-wider">Dashboard</p>
-        <a href="{{url('back-dashboard')}}" class="mb-3 @if (Request::segment(2) == 'dashboard') text-teal-600 @endif capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+        <a href="{{url('back-dashboard')}}" class="mb-3 @if (Request::segment(2) == 'back-dashboard') text-teal-600 @endif capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
             <i class="fad fa-chart-pie text-xs mr-2"></i>                
             Dashboard
         </a>

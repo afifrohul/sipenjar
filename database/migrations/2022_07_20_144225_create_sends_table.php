@@ -17,10 +17,16 @@ class CreateSendsTable extends Migration
             $table->id();
             $table->foreignId('id_user');
             $table->foreignId('id_prisoner');
+            $table->foreignId('id_admin')->nullable();
             $table->date('date');
             $table->enum('session', [1, 2]);
-            $table->enum('type', ['makanan', 'pakaian', 'minuman']);
-            $table->text('desc');
+            $table->enum('type1', [null ,'makanan', 'pakaian', 'minuman']);
+            $table->text('desc1');
+            $table->enum('type2', [null ,'makanan', 'pakaian', 'minuman'])->nullable();
+            $table->text('desc2')->nullable();
+            $table->enum('type3', [null ,'makanan', 'pakaian', 'minuman'])->nullable();
+            $table->text('desc3')->nullable();
+            $table->text('admin_note')->nullable();
             $table->enum('status', ['disetujui', 'ditolak', 'dalam antrian']);
             $table->timestamps();
         });

@@ -17,33 +17,30 @@ class PrisonerSeeder extends Seeder
     {
         $prisoner = Prisoner::create([
             'name' => 'Beno',
-            'nik' => '350920202308090002',
-            'birth_date' => '1990-12-12',
-            'country' => 'Jember',
-            'photo' => 'default.png',
+            'no_regis' => '12332',
+            'enter_date' => '2019-12-12',
             'room' => 'B-12',
+            'case' => 'Lorem Ipsum',
             'created_at' => now(),
             'updated_at' => now()
         ]);
         
         $prisoner = Prisoner::create([
             'name' => 'Beni',
-            'nik' => '350920202308090003',
-            'birth_date' => '1990-12-12',
-            'country' => 'Jember',
-            'photo' => 'default.png',
-            'room' => 'B-12',
+            'no_regis' => '12333',
+            'enter_date' => '2019-12-12',
+            'room' => 'B-13',
+            'case' => 'Lorem Ipsum',
             'created_at' => now(),
             'updated_at' => now()
         ]);
         
         $prisoner = Prisoner::create([
             'name' => 'Bena',
-            'nik' => '350920202308090001',
-            'birth_date' => '1990-12-12',
-            'country' => 'Jember',
-            'photo' => 'default.png',
-            'room' => 'B-12',
+            'no_regis' => '12331',
+            'enter_date' => '2019-12-12',
+            'room' => 'B-14',
+            'case' => 'Lorem Ipsum',
             'created_at' => now(),
             'updated_at' => now()
         ]);

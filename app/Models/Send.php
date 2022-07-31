@@ -16,6 +16,11 @@ class Send extends Model
     {
         return $this->belongsTo(User::class, 'id_user');
     }
+
+    public function admin()
+    {
+        return $this->belongsTo(User::class, 'id_admin');
+    }
     
     public function prisoner()
     {

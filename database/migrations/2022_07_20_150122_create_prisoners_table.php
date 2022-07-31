@@ -15,11 +15,10 @@ class CreatePrisonersTable extends Migration
     {
         Schema::create('prisoners', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('nik')->unique();
-            $table->date('birth_date');
-            $table->string('country');
-            $table->text('photo');
+            $table->string('name')->unique();
+            $table->string('no_regis')->unique();
+            $table->date('enter_date');
+            $table->string('case');
             $table->string('room');
             $table->timestamps();
         });

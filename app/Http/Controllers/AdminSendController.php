@@ -13,6 +13,11 @@ class AdminSendController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    private $param;
+    // public function __construct()
+    // {
+    //     $this->middleware(['role:admin']);
+    // }
     public function index()
     {
         //
@@ -73,7 +78,17 @@ class AdminSendController extends Controller
      */
     public function show(Send $send)
     {
-        //
+        try {
+            $this->param['getDetailSend'] = Send::find($send->id);
+            // $this->param['getNIKSender'] = User::where('id' , $send->id_user)->get();
+            $this->param['getNIKSender'] = UserDetails::where('user_id' , $send->id_user)->get();
+            // $this->param['getNIKSender'] = UserDetails::find($send->id);
+            return view('admin.pages.send.detail-pengiriman-barang', $this->param);
+        } catch(\Throwable $e){
+            return redirect()->back()->withError($e->getMessage());
+        } catch(\Illuminate\Database\QueryException $e){
+            return redirect()->back()->withError($e->getMessage());
+        }
     }
 
     /**
@@ -108,6 +123,8 @@ class AdminSendController extends Controller
     {
         try {
             $send = Send::find($send->id);
+            $send->id_admin = \Auth::user()->id;
+            $send->admin_note = $request->admin_note;
             $send->status = $request->status;
             $send->save();
             return redirect('/back-admin/pengiriman/data')->withStatus('Berhasil memperbarui data.');

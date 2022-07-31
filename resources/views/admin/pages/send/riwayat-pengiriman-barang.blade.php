@@ -31,11 +31,19 @@
                             <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Tipe Barang
                             </th>
+                            @if (Auth::user()->id == 1)
                             <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Deskripsi
+                                Admin
+                            </th>
+                            @endif
+                            <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Catatan
                             </th>
                             <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Status
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Opsi
                             </th>
                         </tr>
                     </thead>
@@ -63,11 +71,18 @@
                                 @endif
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-center">
-                                <div class="text-sm text-gray-900">{{$item->type}}</div>
+                                <div class="text-sm text-gray-900">{{$item->type1}}</div>
+                                <div class="text-sm text-gray-900">{{$item->type2}}</div>
+                                <div class="text-sm text-gray-900">{{$item->type3}}</div>
                             </td>
+                            @if (Auth::user()->id == 1)
+                            <td class="px-6 py-4 whitespace-nowrap text-center">
+                                <div class="text-sm text-gray-900">{{$item->admin->name}}</div>
+                            </td>
+                            @endif
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-center">
-                                <div class="text-sm text-gray-900">{{Str::limit($item->desc, 100)}}</div>
+                                <div class="text-sm text-gray-900">{{Str::limit($item->admin_note, 100)}}</div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-center">
                                 @if ($item->status == 'dalam antrian')
@@ -83,6 +98,14 @@
                                     {{$item->status}}
                                 </div>
                                 @endif
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-center">
+                                <div>
+                                    <form action="{{url('/back-admin/pengiriman/riwayat/show',$item->id)}}" method="POST" class="inline">
+                                        @csrf
+                                        <button type="submit" class="bg-yellow-500 h-10 w-10 rounded hover:bg-yellow-600"><i class="fa fa-eye text-white"></i></button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                         @endforeach

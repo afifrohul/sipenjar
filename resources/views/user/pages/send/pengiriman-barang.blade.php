@@ -10,11 +10,11 @@
                 @csrf
                 <div>
                     <label class="text-gray-700 ml-1">Tujuan Tahanan : </label>
-                    <select id="pilih_tahanan" placeholder="Cari Nama / NIK Tahanan" name="id_prisoner" class="form-input mt-1 p-3 border-2 @error('tag') border-red-500 @enderror focus:outline-none focus:border-teal-500 form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0">
+                    <select id="pilih_tahanan" placeholder="Cari Nama / No Registrasi Tahanan" name="id_prisoner" class="form-input mt-1 p-3 border-2 @error('tag') border-red-500 @enderror focus:outline-none focus:border-teal-500 form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0">
 
-                      <option value="">Cari Nama / NIK Tahanan</option>
+                      <option value="">Cari Nama / No Registrasi Tahanan</option>
                       @foreach ($getPrisoner as $item)
-                      <option value="{{ $item->id }}">{{ $item->nik }} - {{ $item->name }}</option>
+                      <option value="{{ $item->id }}">{{ $item->no_regis }} - {{ $item->name }}</option>
                           
                       @endforeach
                     </select>
@@ -24,15 +24,6 @@
                     </span>
                     @enderror
                 </div>
-                {{-- <div>
-                    <label class="text-gray-700 ml-1">Tujuan Tahanan : </label>
-                    <input type="text" name="id_prisoner" class="form-input w-full block rounded mt-1 p-3 border-2 @error('id_prisoner') border-red-500 @enderror focus:outline-none focus:border-teal-500" placeholder="" value="{{old('id_prisoner')}}">
-                    @error('id_prisoner')
-                    <span class="pl-1 text-xs text-red-600 text-bold">
-                        {{$message}}
-                    </span>
-                    @enderror
-                </div> --}}
                 <div class="mt-3">
                     <label class="text-gray-700 ml-1">Tanggal Pengiriman : </label>
                     <div x-data="app()" x-init="[initDate(), getNoOfDays()]" x-cloak>
@@ -109,22 +100,69 @@
                     @enderror
                 </div>
                 <div class="mt-3">
-                    <label class="text-gray-700 ml-1">Tipe Barang : </label>
-                    <select name="type" class="form-input mt-1 p-3 border-2 @error('tag') border-red-500 @enderror focus:outline-none focus:border-teal-500 form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0">
+                    <label class="text-gray-700 ml-1">Tipe Barang 1 : </label>
+                    <select name="type1" class="form-input mt-1 p-3 border-2 @error('type1') border-red-500 @enderror focus:outline-none focus:border-teal-500 form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0">
+                        <option value={{ null }}>--Pilih Jenis--</option>
                         <option value="makanan">Makanan</option>
                         <option value="minuman">Minuman</option>
                         <option value="pakaian">Pakaian</option>
                     </select>
-                    @error('type')
+                    @error('type1')
                     <span class="pl-1 text-xs text-red-600 text-bold">
                         {{$message}}
                     </span>
                     @enderror
                 </div>
                 <div>
-                    <label class="text-gray-700 ml-1">Deskripsi : </label>
-                    <input type="text" name="desc" class="form-input w-full block rounded mt-1 p-3 border-2 @error('desc') border-red-500 @enderror focus:outline-none focus:border-teal-500" placeholder="" value="{{old('desc')}}">
-                    @error('desc')
+                    <label class="text-gray-700 ml-1">Deskripsi 1 : </label>
+                    <input type="text" name="desc1" class="form-input w-full block rounded mt-1 p-3 border-2 @error('desc1') border-red-500 @enderror focus:outline-none focus:border-teal-500" placeholder="" value="{{old('desc1')}}">
+                    @error('desc1')
+                    <span class="pl-1 text-xs text-red-600 text-bold">
+                        {{$message}}
+                    </span>
+                    @enderror
+                </div>
+                <div class="mt-3">
+                    <label class="text-gray-700 ml-1">Tipe Barang 2 : </label>
+                    <select name="type2" class="form-input mt-1 p-3 border-2 @error('type2') border-red-500 @enderror focus:outline-none focus:border-teal-500 form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0">
+                        <option value={{ null }}>--Pilih Jenis (Kosongi jika hanya mengirimkan 1 jenis barang)--</option>
+                        <option value="makanan">Makanan</option>
+                        <option value="minuman">Minuman</option>
+                        <option value="pakaian">Pakaian</option>
+                    </select>
+                    @error('type2')
+                    <span class="pl-1 text-xs text-red-600 text-bold">
+                        {{$message}}
+                    </span>
+                    @enderror
+                </div>
+                <div>
+                    <label class="text-gray-700 ml-1">Deskripsi 2 : </label>
+                    <input type="text" name="desc2" class="form-input w-full block rounded mt-1 p-3 border-2 @error('desc2') border-red-500 @enderror focus:outline-none focus:border-teal-500" placeholder="" value="{{old('desc2')}}">
+                    @error('desc2')
+                    <span class="pl-1 text-xs text-red-600 text-bold">
+                        {{$message}}
+                    </span>
+                    @enderror
+                </div>
+                <div class="mt-3">
+                    <label class="text-gray-700 ml-1">Tipe Barang 3 : </label>
+                    <select name="type3" class="form-input mt-1 p-3 border-2 @error('type3') border-red-500 @enderror focus:outline-none focus:border-teal-500 form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0">
+                        <option value={{ null }}>--Pilih Jenis (Kosongi jika hanya mengirimkan 2 jenis barang)--</option>
+                        <option value="makanan">Makanan</option>
+                        <option value="minuman">Minuman</option>
+                        <option value="pakaian">Pakaian</option>
+                    </select>
+                    @error('type3')
+                    <span class="pl-1 text-xs text-red-600 text-bold">
+                        {{$message}}
+                    </span>
+                    @enderror
+                </div>
+                <div>
+                    <label class="text-gray-700 ml-1">Deskripsi 3 : </label>
+                    <input type="text" name="desc3" class="form-input w-full block rounded mt-1 p-3 border-2 @error('desc3') border-red-500 @enderror focus:outline-none focus:border-teal-500" placeholder="" value="{{old('desc3')}}">
+                    @error('desc3')
                     <span class="pl-1 text-xs text-red-600 text-bold">
                         {{$message}}
                     </span>

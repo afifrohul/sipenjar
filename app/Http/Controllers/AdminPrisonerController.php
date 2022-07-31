@@ -13,10 +13,10 @@ class AdminPrisonerController extends Controller
      * @return \Illuminate\Http\Response
      */
     private $param;
-    public function __construct()
-    {
-        $this->middleware(['role:admin']);
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware(['role:admin']);
+    // }
     public function index()
     {
         try {
@@ -55,42 +55,37 @@ class AdminPrisonerController extends Controller
      */
     public function store(Request $request)
     {
-         $this->validate($request,
+        $this->validate($request,
         [
             'name' => 'required',
-            'nik' => 'required|numeric',
-            'birth_date' => 'required',
-            'country' => 'required',
+            'no_regis' => 'required|numeric',
+            'enter_date' => 'required',
+            'case' => 'required',
             'room' =>  'required',
-            // 'photo' =>  'required',
         ],
         [
             'required' => ':attribute  harus diisi.',
         ],
         [
             'name' => 'Nama',
-            'nik' => 'NIK',
-            'birth_date' => 'Tanggal Lahir',
-            'country' => 'Asal',
+            'no_regis' => 'No Registrasi',
+            'enter_date' => 'Tanggal Masuk',
+            'case' => 'kasus',
             'room' => 'Ruangan',
-            // 'photo' => 'Foto'
         ]);
         try {
-            $date = date('H-i-s');
-            $random = \Str::random(5);
-
             $prisoner = new Prisoner();
             $prisoner->name = $request->name;
-            $prisoner->nik = $request->nik;
-            $prisoner->birth_date = $request->birth_date;
-            $prisoner->country = $request->country;
+            $prisoner->no_regis = $request->no_regis;
+            $prisoner->enter_date = $request->enter_date;
+            $prisoner->case = $request->case;
             $prisoner->room = $request->room;
-            if ($request->file('photo')) {
-                $request->file('photo')->move('assets/upload/prisoner', $date.$random.$request->file('photo')->getClientOriginalName());
-                $prisoner->photo = $date.$random.$request->file('photo')->getClientOriginalName();
-            } else {
-                $prisoner->photo = "default.png";
-            }
+            // if ($request->file('photo')) {
+            //     $request->file('photo')->move('assets/upload/prisoner', $date.$random.$request->file('photo')->getClientOriginalName());
+            //     $prisoner->photo = $date.$random.$request->file('photo')->getClientOriginalName();
+            // } else {
+            //     $prisoner->photo = "default.png";
+            // }
             $prisoner->save();
 
             return redirect('/back-admin/prisoner')->withStatus('Berhasil menambah data.');
@@ -144,39 +139,34 @@ class AdminPrisonerController extends Controller
         $this->validate($request,
         [
             'name' => 'required',
-            'nik' => 'required',
-            'birth_date' => 'required',
-            'country' => 'required',
+            'no_regis' => 'required|numeric',
+            'enter_date' => 'required',
+            'case' => 'required',
             'room' =>  'required',
-            // 'photo' =>  'required',
         ],
         [
             'required' => ':attribute  harus diisi.',
         ],
         [
             'name' => 'Nama',
-            'nik' => 'NIK',
-            'birth_date' => 'Tanggal Lahir',
-            'country' => 'Asal',
+            'no_regis' => 'No Registrasi',
+            'enter_date' => 'Tanggal Masuk',
+            'case' => 'kasus',
             'room' => 'Ruangan',
-            // 'photo' => 'Foto'
         ]);
         try {
-            $date = date('H-i-s');
-            $random = \Str::random(5);
-
             $prisoner = Prisoner::find($prisoner->id);
             $prisoner->name = $request->name;
-            $prisoner->nik = $request->nik;
-            $prisoner->birth_date = $request->birth_date;
-            $prisoner->country = $request->country;
+            $prisoner->no_regis = $request->no_regis;
+            $prisoner->enter_date = $request->enter_date;
+            $prisoner->case = $request->case;
             $prisoner->room = $request->room;
-            if ($request->file('photo')) {
-                $request->file('photo')->move('assets/upload/prisoner', $date.$random.$request->file('photo')->getClientOriginalName());
-                $prisoner->photo = $date.$random.$request->file('photo')->getClientOriginalName();
-            } else {
-                $prisoner->photo = "default.png";
-            }
+            // if ($request->file('photo')) {
+            //     $request->file('photo')->move('assets/upload/prisoner', $date.$random.$request->file('photo')->getClientOriginalName());
+            //     $prisoner->photo = $date.$random.$request->file('photo')->getClientOriginalName();
+            // } else {
+            //     $prisoner->photo = "default.png";
+            // }
             $prisoner->save();
 
             return redirect('/back-admin/prisoner')->withStatus('Berhasil mengubah data.');

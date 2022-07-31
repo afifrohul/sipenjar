@@ -60,7 +60,7 @@ class SendController extends Controller
         [
             'id_prisoner' => 'required',
             'date' => 'required',
-            'desc' => 'required',
+            'desc1' => 'required',
         ],
         [
             'required' => ':attribute  harus diisi.',
@@ -68,7 +68,7 @@ class SendController extends Controller
         [
             'id_prisoner' => 'Tujuan Tahanan',
             'date' => 'Tanggal Pengiriman',
-            'desc' => 'Deskripsi Barang',
+            'desc1' => 'Deskripsi Barang',
         ]);
 
         try {
@@ -90,11 +90,20 @@ class SendController extends Controller
                 }
             }
 
-            
-            // $send->date = $request->date;
-            // $send->session = 1;
-            $send->desc = $request->desc;
-            $send->type = $request->type;
+            // $send->type1 = 'makanan';
+            // $send->desc1 = 'lorem';
+            $send->type1 = $request->type1;
+            $send->desc1 = $request->desc1;
+            // $send->type3 = $request->type3;
+            // $send->desc3 = $request->desc3;
+            if ($request->type2) {
+                $send->type2 = $request->type2;
+                $send->desc2 = $request->desc2;
+            } elseif ($request->type3) {
+                $send->type3 = $request->type3;
+                $send->desc3 = $request->desc3;
+
+            }
             $send->status = 'dalam antrian';
             $send->save();
 

@@ -28,9 +28,9 @@
                             <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Tipe Barang
                             </th>
-                            <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            {{-- <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Deskripsi Barang
-                            </th>
+                            </th> --}}
                             <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Status
                             </th>
@@ -56,11 +56,13 @@
                                 @endif
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-center">
-                                <div class="text-sm text-gray-900">{{$item->type}}</div>
+                                <div class="text-sm text-gray-900">{{$item->type1}}</div>
+                                <div class="text-sm text-gray-900">{{$item->type2}}</div>
+                                <div class="text-sm text-gray-900">{{$item->type3}}</div>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-center">
+                            {{-- <td class="px-6 py-4 whitespace-nowrap text-center">
                                 <div class="text-sm text-gray-900">{{Str::limit($item->desc, 100)}}</div>
-                            </td>
+                            </td> --}}
                             <td class="px-6 py-4 whitespace-nowrap text-center">
                                 @if ($item->status == 'dalam antrian')
                                 <div class="text-sm text-gray-900 bg-yellow-300 py-2 rounded">

@@ -13,6 +13,12 @@
         </a>
 
         <p class="uppercase text-xs text-gray-600 mb-4 mt-4 tracking-wider">Master Data</p>
+        @if (Auth::user()->id == 1)
+        <a href="{{url('/back-admin/admin')}}" class="mb-3 @if (Request::segment(2) == 'admin') text-teal-600 @endif capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
+            <i class="fad fa-user text-xs mr-2"></i>
+            &nbsp;Admin
+        </a>
+        @endif
         <a href="{{url('/back-admin/prisoner')}}" class="mb-3 @if (Request::segment(2) == 'prisoner') text-teal-600 @endif capitalize font-medium text-sm hover:text-teal-600 transition ease-in-out duration-500">
             <i class="fad fa-bullseye-pointer text-xs mr-2"></i>
             &nbsp;Tahanan

@@ -9,16 +9,19 @@ use Illuminate\Http\Request;
 
 class AdminDashboardController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware(['role:admin']);
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware(['role:admin']);
+    // }
 
     private $param;
     public function index()
     {
         try {
-            $this->param['getCountUser'] = User::count();
+            // $this->param['getRole'] = \Auth::user()->roles->pluck('name')[0];
+            $this->param['getCountAdmin'] = User::whereHas('roles', function($thisRole){
+                $thisRole->where('name', 'admin');
+            })->count();
             $this->param['getCountTahanan'] = Prisoner::count();
             $this->param['getCountPengirimanBarangHistory'] = Send::count();
             $this->param['getCountPengirimanBarangPending'] = Send::where('status', 'dalam antrian')->count();

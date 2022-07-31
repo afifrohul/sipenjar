@@ -54,4 +54,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Send::class, 'id_user');
     }
+
+    public function admin()
+    {
+        return $this->hasMany(Send::class, 'id_admin');
+    }
 }

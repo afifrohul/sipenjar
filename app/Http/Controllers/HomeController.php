@@ -14,7 +14,7 @@ class HomeController extends Controller
     public function index()
     {
         $roleUser = \Auth::user()->roles->pluck('name')[0];
-        if ($roleUser == 'admin') {
+        if ($roleUser == 'admin' || $roleUser == 'superadmin') {
             return redirect('/back-admin/back-dashboard');
         } elseif ($roleUser == 'user') {
             return redirect('/back-user/back-dashboard');

@@ -3,58 +3,81 @@
 <div>
     <div class="card mb-8">
         <div class="card-header flex flex-row justify-between">
-            <h1 class="h6">Tambah Tahanan</h1>
+            <h1 class="h6">Detail Pengiriman Barang</h1>
         </div>
         <div class="card-body">
-            <form method="POST" action="{{url('/back-admin/prisoner/store')}}" enctype="multipart/form-data">
+            <form>
+                {{-- @method('PUT') --}}
                 @csrf
                 <div>
-                    <label class="text-gray-700 ml-1">Nama Lengkap : </label>
-                    <input type="text" name="name" class="form-input w-full block rounded mt-1 p-3 border-2 @error('name') border-red-500 @enderror focus:outline-none focus:border-teal-500" placeholder="Nama Lengkap" value="{{old('name')}}">
-                    @error('name')
-                    <span class="pl-1 text-xs text-red-600 text-bold">
-                        {{$message}}
-                    </span>
-                    @enderror
+                    <label class="text-gray-700 ml-1">Nama Pengirim : </label>
+                    {{-- <p class="ml-1 text-base">{{ $getDetailSend->user->name }}</p> --}}
+                    <p class="ml-1 text-base">{{ $getDetailSend->user->name }}</p>
                 </div>
                 <div class="mt-3">
-                    <label class="text-gray-700 ml-1">No Registrasi : </label>
-                    <input type="text" name="no_regis" class="form-input w-full block rounded mt-1 p-3 border-2 @error('no_regis') border-red-500 @enderror focus:outline-none focus:border-teal-500" placeholder="No Registrasi" value="{{old('no_regis')}}">
-                    @error('no_regis')
-                    <span class="pl-1 text-xs text-red-600 text-bold">
-                        {{$message}}
-                    </span>
-                    @enderror
+                    <label class="text-gray-700 ml-1">NIK Pengirim : </label>
+                    <p class="ml-1 text-base">{{ $getNIKSender[0]->nik }}</p>
+                    <div class="text-sm text-gray-900">
+                        <img class="h-64 object-cover m-auto ml-1" src="{{asset('assets/upload/ktp/')}}/{{$getNIKSender[0]->ktp_photo}}">
+                    </div>
                 </div>
                 <div class="mt-3">
-                    <label class="text-gray-700 ml-1">Tanggal Masuk : </label>
-                    <input type="date" name="enter_date" class="form-input w-full block rounded mt-1 p-3 border-2 @error('enter_date') border-red-500 @enderror focus:outline-none focus:border-teal-500" placeholder="YYYY-MM-DD" value="{{old('enter_date')}}">
-                    @error('enter_date')
-                    <span class="pl-1 text-xs text-red-600 text-bold">
-                        {{$message}}
-                    </span>
-                    @enderror
+                    <label class="text-gray-700 ml-1">Tujuan Tahanan : </label>
+                    <p class="ml-1 text-base">{{ $getDetailSend->prisoner->name }}</p>
+                <div class="mt-3">
+                    <label class="text-gray-700 ml-1">Tanggal Pengiriman : </label>
+                    <p class="ml-1 text-base">{{ $getDetailSend->date }}</p>
                 </div>
                 <div class="mt-3">
-                    <label class="text-gray-700 ml-1">Kasus : </label>
-                    <input type="text" name="case" class="form-input w-full block rounded mt-1 p-3 border-2 @error('case') border-red-500 @enderror focus:outline-none focus:border-teal-500" placeholder="Kasus" value="{{old('case')}}">
-                    @error('case')
-                    <span class="pl-1 text-xs text-red-600 text-bold">
-                        {{$message}}
-                    </span>
-                    @enderror
+                    <label class="text-gray-700 ml-1">Sesi : </label>
+                    @if ($getDetailSend->session == 1)
+                    <p class="ml-1 text-base">09.00 - 10.00</p>
+                    @elseif($getDetailSend->session == 2)
+                    <p class="ml-1 text-base">10.00 - 11.00</p>
+                    @endif
                 </div>
                 <div class="mt-3">
-                    <label class="text-gray-700 ml-1">Ruangan : </label>
-                    <input type="text" name="room" class="form-input w-full block rounded mt-1 p-3 border-2 @error('room') border-red-500 @enderror focus:outline-none focus:border-teal-500" placeholder="Ruangan" value="{{old('room')}}">
-                    @error('room')
-                    <span class="pl-1 text-xs text-red-600 text-bold">
-                        {{$message}}
-                    </span>
-                    @enderror
+                    <label class="text-gray-700 ml-1">Tipe Barang 1 : </label>
+                    <p class="ml-1 text-base">{{ $getDetailSend->type1 }}</p>
+                </div>
+                <div class="mt-3">
+                    <label class="text-gray-700 ml-1">Deskripsi Barang 1 : </label>
+                    <p class="ml-1 text-base">{{ $getDetailSend->desc1 }}</p>
+                </div>
+                @if ($getDetailSend->type2)  
+                <div class="mt-3">
+                    <label class="text-gray-700 ml-1">Tipe Barang 2 : </label>
+                    <p class="ml-1 text-base">{{ $getDetailSend->type2 }}</p>
+                </div>
+                <div class="mt-3">
+                    <label class="text-gray-700 ml-1">Deskripsi Barang 2 : </label>
+                    <p class="ml-1 text-base">{{ $getDetailSend->desc2 }}</p>
+                </div>
+                @endif
+                @if ($getDetailSend->type3)
+                <div class="mt-3">
+                  <label class="text-gray-700 ml-1">Tipe Barang 3 : </label>
+                  <p class="ml-1 text-base">{{ $getDetailSend->type3 }}</p>
+                </div>
+                <div class="mt-3">
+                  <label class="text-gray-700 ml-1">Deskripsi Barang 3 : </label>
+                  <p class="ml-1 text-base">{{ $getDetailSend->desc3 }}</p>
+                </div>
+                @endif
+                <div class="mt-3">
+                    <label class="text-gray-700 ml-1">Admin : </label>
+                    <p class="ml-1 text-base">{{ $getDetailSend->admin->name }}</p>
+                </div>
+                <div class="mt-3">
+                    <label class="text-gray-700 ml-1">Catatan Admin : </label>
+                    <p class="ml-1 text-base">{{ $getDetailSend->admin_note }}</p>
+                </div>
+                <div class="mt-3">
+                    <label class="text-gray-700 ml-1">Status : </label>
+                    <p class="ml-1 text-base">{{ $getDetailSend->status }}</p>
                 </div>
                 <div class="mt-5">
-                    <button type="submit" class="btn-shadow">Simpan</button>
+                    <a href="{{ url('/back-admin/pengiriman/riwayat') }}" class="btn-shadow" >Kembali</a>
                 </div>
             </form>
         </div>
@@ -63,11 +86,11 @@
 @endsection
 @section('extraJS')
 <script>
-    photo.onchange = evt => {
-        const [file] = photo.files;
+    logos.onchange = evt => {
+        const [file] = logos.files;
         if (file) {
             preview.src = URL.createObjectURL(file);
-            fileName.innerHTML = document.getElementById("photo").value.split("\\").pop();
+            fileName.innerHTML = document.getElementById("logos").value.split("\\").pop();
         }
     }
 </script>
@@ -199,6 +222,14 @@
           this.no_of_days = daysArray;
         },
       };
+    }
+
+  berkas_cutis.onchange = evt => {
+        const [file] = berkas_cutis.files;
+        if (file) {
+            preview.src = URL.createObjectURL(file);
+            fileName.innerHTML = document.getElementById("berkas_cutis").value.split("\\").pop();
+        }
     }
 </script>
 @endsection
