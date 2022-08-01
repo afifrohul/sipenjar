@@ -8,6 +8,35 @@
         <div class="card-body">
             <form method="POST" action="{{url('/back-user/pengiriman-barang/store')}}" enctype="multipart/form-data">
                 @csrf
+                <div class="mt-3">
+                  <div class="alert alert-default alert-close mb-5 mx-auto bg-yellow-100 border-t-4 border-yellow-600 mt-4">
+                    <div class="flex w-full justify-start items-center">
+                      <div class="mx-4">
+                          <div class="inline-flex items-center bg-yellow-600 p-2 text-white text-sm rounded-full flex-shrink-0">
+                              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-exclamation-lg w-5 h-5" viewBox="0 0 16 16">
+                                  <path d="M7.005 3.1a1 1 0 1 1 1.99 0l-.388 6.35a.61.61 0 0 1-1.214 0L7.005 3.1ZM7 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0Z"/>
+                              </svg>
+                          </div>
+                      </div>
+                      <div class="mx-4">
+                        <h1 class="font-bold leading-5 capitalize  text-gray-700">
+                            Peraturan Pengiriman Barang :
+                        </h1>
+                        <p class="text-gray-700">1. Tidak membawa nasi dan lauk lebih dari tiga (3) porsi/bungkus.</p>
+                        <p class="text-gray-700">2. Tidak membawa barang/makanan dalam kemasan/bungkus pabrik kecuali dipindah ke plastik transparan, untuk seluruh barang kemasan pabrik (jumlah dibatasi 3 sachet).</p>
+                        <p class="text-gray-700">3. Tidak membawa buah utuh kecuali sudah di kupas dan di potong-potong (maksimal 1 bungkus plastik ukuran 250gr).</p>
+                        <p class="text-gray-700">4. Tidak membawa tembakau/rokok lebih dari 1 bungkus (untuk tembakau/rokok maksimal 1 bungkus plastik ukuran 250gr).</p>
+                        <p class="text-gray-700">5. Tidak membawa sayuran mentah. (cabe, tomat, dan sayur lalapan).</p>
+                        <p class="text-gray-700">6. Tidak membawa pakaian kecuali bagi tahanan baru.</p>
+                        <p class="text-gray-700">7. Tidak boleh membawa kacang kulit.</p>
+                        <p class="text-gray-700">8. Tidak membawa narkoba dan obat obatan tanpa resep dokter.</p>
+                        <p class="text-gray-700">9. Tidak membawa hp atau barang elektronik.</p>
+                        <p class="text-gray-700">10. Tidak membawa senjata tajam dan senjata api</p>
+                        <p class="text-gray-700">11. Tidak boleh membawa berbagai macam olahan tahu baik sayur dan lauk.</p>
+                        <p class="text-gray-700"></p>
+                    </div>  
+                  </div>
+                </div>
                 <div>
                     <label class="text-gray-700 ml-1">Tujuan Tahanan : </label>
                     <select id="pilih_tahanan" placeholder="Cari Nama / No Registrasi Tahanan" name="id_prisoner" class="form-input mt-1 p-3 border-2 @error('tag') border-red-500 @enderror focus:outline-none focus:border-teal-500 form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0">
@@ -99,40 +128,7 @@
                     </span>
                     @enderror
                 </div>
-                <div class="mt-3">
-                  <div class="alert alert-default alert-close mb-5 mx-auto bg-yellow-100 border-t-4 border-yellow-600 mt-4">
-                    <div class="flex w-full justify-start items-center">
-                      <div class="mx-4">
-                          <div class="inline-flex items-center bg-yellow-600 p-2 text-white text-sm rounded-full flex-shrink-0">
-                              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-exclamation-lg w-5 h-5" viewBox="0 0 16 16">
-                                  <path d="M7.005 3.1a1 1 0 1 1 1.99 0l-.388 6.35a.61.61 0 0 1-1.214 0L7.005 3.1ZM7 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0Z"/>
-                              </svg>
-                          </div>
-                      </div>
-                      <div class="mx-4">
-                        <h1 class="font-bold leading-5 capitalize  text-gray-700">
-                            List Barang yang dilarang :
-                        </h1>
-                        <h2 class="font-medium leading-5 capitalize  text-gray-700">
-                          Makanan
-                        </h2>
-                        <p class="text-gray-600">Lorem ipsum dolor sit amet.</p>
-                        <p class="text-gray-600">Lorem ipsum dolor sit amet.</p>
-                        <p class="text-gray-600">Lorem ipsum dolor sit amet.</p>
-                        <h2 class="font-medium leading-5 capitalize  text-gray-700">
-                          Minuman
-                        </h2>
-                        <p class="text-gray-600">Lorem ipsum dolor sit amet.</p>
-                        <p class="text-gray-600">Lorem ipsum dolor sit amet.</p>
-                        <h2 class="font-medium leading-5 capitalize  text-gray-700">
-                          Pakaian
-                        </h2>
-                        <p class="text-gray-600">Lorem ipsum dolor sit amet.</p>
-                        <p class="text-gray-600">Lorem ipsum dolor sit amet.</p>
-                        <p class="text-gray-600">Lorem ipsum dolor sit amet.</p>
-                    </div>  
-                  </div>
-                </div>
+
                 <div class="mt-3">
                     <label class="text-gray-700 ml-1">Tipe Barang 1 : </label>
                     <select name="type1" class="form-input mt-1 p-3 border-2 @error('type1') border-red-500 @enderror focus:outline-none focus:border-teal-500 form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0">
