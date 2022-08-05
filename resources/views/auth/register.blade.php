@@ -2,7 +2,7 @@
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                <img class="h-20" src="{{asset('assets/img-admin/L PASSO.png')}}" >
             </a>
         </x-slot>
 
@@ -72,7 +72,7 @@
 
             <div class="mt-3 grid grid-cols-2 gap-6 xl:grid-cols-1 items-center">
                 <div>
-                    <label class="text-gray-700 ml-1">Photo : </label>
+                    <label class="text-gray-700 ml-1">KTP Photo : </label>
                     <div class='flex items-center justify-center w-full mt-2'>
                         <label class='flex flex-col border-4 border-dashed w-full h-32 hover:bg-gray-100 hover:border-teal-500 group'>
                             <div class='flex flex-col items-center justify-center pt-7 text-center'>
@@ -88,7 +88,7 @@
                     <div class='flex items-center justify-center w-full mt-2'>
                         <label class='flex flex-col border-4 border-dashed w-full h-auto border-teal-500 group bg-gray-300'>
                                 <div class='flex flex-col items-center justify-center py-1'>
-                                    <img id="preview" src="{{asset('assets/upload/ktp_photo/default.png')}}" alt="preview" class="object-cover h-32">
+                                    <img id="preview" src="{{asset('assets/upload/ktp/default.png')}}" alt="preview" class="object-cover h-32 opacity-50">
                                 </div>
                         </label>
                     </div>

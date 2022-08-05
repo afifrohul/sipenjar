@@ -5,7 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
+        <title>Siantartika BWS</title>
+
+        <link rel="icon" href="{{asset('assets/img-admin/L PASSO.png')}}" type="image/x-icon">
 
         <link rel="stylesheet" type="text/css" href="{{asset('assets/css-admin/style.css')}}">
 

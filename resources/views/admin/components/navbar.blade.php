@@ -1,7 +1,7 @@
 <div class="md:fixed md:w-full md:top-0 md:z-20 flex flex-row flex-wrap items-center p-6 border-b border-gray-300 bg-white"
 >
     <div class="flex-none w-56 flex flex-row items-center">
-        <h1 class="font-black">L O G O</h1>
+        <img class="h-6" src="{{asset('assets/img-admin/L PASSO.png')}}" >
         <button id="sliderBtn" class="flex-none text-right text-gray-900 hidden md:block">
             <i class="fad fa-list-ul"></i>
         </button>
