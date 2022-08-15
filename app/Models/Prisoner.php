@@ -11,6 +11,7 @@ class Prisoner extends Model
     use HasFactory, HasRoles;
     protected $table = 'prisoners';
     protected $primaryKey = 'id';
+    protected $fillable = ['name', 'no_regis', 'enter_date', 'room', 'case'];
 
     public function send()
     {

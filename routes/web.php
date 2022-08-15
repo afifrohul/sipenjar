@@ -36,7 +36,7 @@ Route::post('/back-user/riwayat-pengiriman-barang/show/{send}', [SendController:
 Route::get('/back-user/pengiriman-barang', [SendController::class, 'create']);
 Route::post('/back-user/pengiriman-barang/store', [SendController::class, 'store']);
 
-Route::group(['middleware' => ['role:admin']], function() {
+Route::group(['middleware' => ['role:admin']], function () {
     //admin
     Route::get('/back-admin/back-dashboard', [AdminDashboardController::class, 'index']);
 
@@ -52,18 +52,18 @@ Route::group(['middleware' => ['role:admin']], function() {
     Route::get('/back-admin/prisoner', [AdminPrisonerController::class, 'index']);
     Route::get('/back-admin/prisoner/create', [AdminPrisonerController::class, 'create']);
     Route::post('/back-admin/prisoner/store', [AdminPrisonerController::class, 'store']);
+    Route::post('/back-admin/prisoner/import', [AdminPrisonerController::class, 'importFile']);
     Route::post('/back-admin/prisoner/edit/{prisoner}', [AdminPrisonerController::class, 'edit']);
     Route::put('/back-admin/prisoner/update/{prisoner}', [AdminPrisonerController::class, 'update']);
     Route::delete('/back-admin/prisoner/destroy/{prisoner}', [AdminPrisonerController::class, 'destroy']);
-    
+
     //send
     Route::get('/back-admin/pengiriman/data', [AdminSendController::class, 'data']);
     Route::get('/back-admin/pengiriman/riwayat', [AdminSendController::class, 'riwayat']);
     Route::post('/back-admin/pengiriman/riwayat/show/{send}', [AdminSendController::class, 'show']);
     Route::post('/back-admin/pengiriman/edit/{send}', [AdminSendController::class, 'edit']);
     Route::put('/back-admin/pengiriman/update/{send}', [AdminSendController::class, 'update']);
-
 });
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
