@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\UserDetails;
+// use App\Models\UserDetails;
 use App\Models\Send;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
@@ -58,5 +59,10 @@ class User extends Authenticatable
     public function admin()
     {
         return $this->hasMany(Send::class, 'id_admin');
+    }
+
+    public function articles()
+    {
+        return $this->hasMany(Article::class, 'id_admin');
     }
 }

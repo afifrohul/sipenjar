@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Prisoner;
 use Illuminate\Http\Request;
 
+
+use App\Imports\LaptopsImport;
+use App\Imports\PrisonerImport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class AdminPrisonerController extends Controller
 {
     /**
@@ -55,24 +60,26 @@ class AdminPrisonerController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,
-        [
-            'name' => 'required',
-            'no_regis' => 'required|numeric',
-            'enter_date' => 'required',
-            'case' => 'required',
-            'room' =>  'required',
-        ],
-        [
-            'required' => ':attribute  harus diisi.',
-        ],
-        [
-            'name' => 'Nama',
-            'no_regis' => 'No Registrasi',
-            'enter_date' => 'Tanggal Masuk',
-            'case' => 'kasus',
-            'room' => 'Ruangan',
-        ]);
+        $this->validate(
+            $request,
+            [
+                'name' => 'required',
+                'no_regis' => 'required|numeric',
+                'enter_date' => 'required',
+                'case' => 'required',
+                'room' =>  'required',
+            ],
+            [
+                'required' => ':attribute  harus diisi.',
+            ],
+            [
+                'name' => 'Nama',
+                'no_regis' => 'No Registrasi',
+                'enter_date' => 'Tanggal Masuk',
+                'case' => 'kasus',
+                'room' => 'Ruangan',
+            ]
+        );
         try {
             $prisoner = new Prisoner();
             $prisoner->name = $request->name;
@@ -89,11 +96,33 @@ class AdminPrisonerController extends Controller
             $prisoner->save();
 
             return redirect('/back-admin/prisoner')->withStatus('Berhasil menambah data.');
-
         } catch (\Exception $e) {
             return redirect()->back()->withError($e->getMessage());
         } catch (\Illuminate\Database\QueryException $e) {
             return redirect()->back()->withError('Terjadi kesalahan pada database', $e->getMessage());
+        }
+    }
+
+    public function importFile(Request $request)
+    {
+        // $request->validate([
+        //     'importFile' => 'required|mimes:csv,xls,xlsx'
+        // ]);
+
+        $file = $request->file('importFile');
+        $fileName = rand() . $file->getClientOriginalName();
+
+        $file->move('files/', $fileName);
+
+        $import = Excel::import(new PrisonerImport, public_path('files/' . $fileName));
+
+        // return redirect('prisoner');
+        if ($import) {
+            //redirect
+            return redirect()->route('AdminPrisonerController.index')->with(['success' => 'Data Berhasil Diimport!']);
+        } else {
+            //redirect
+            return redirect()->route('AdminPrisonerController.index')->with(['error' => 'Data Gagal Diimport!']);
         }
     }
 
@@ -136,24 +165,26 @@ class AdminPrisonerController extends Controller
      */
     public function update(Request $request, Prisoner $prisoner)
     {
-        $this->validate($request,
-        [
-            'name' => 'required',
-            'no_regis' => 'required|numeric',
-            'enter_date' => 'required',
-            'case' => 'required',
-            'room' =>  'required',
-        ],
-        [
-            'required' => ':attribute  harus diisi.',
-        ],
-        [
-            'name' => 'Nama',
-            'no_regis' => 'No Registrasi',
-            'enter_date' => 'Tanggal Masuk',
-            'case' => 'kasus',
-            'room' => 'Ruangan',
-        ]);
+        $this->validate(
+            $request,
+            [
+                'name' => 'required',
+                'no_regis' => 'required|numeric',
+                'enter_date' => 'required',
+                'case' => 'required',
+                'room' =>  'required',
+            ],
+            [
+                'required' => ':attribute  harus diisi.',
+            ],
+            [
+                'name' => 'Nama',
+                'no_regis' => 'No Registrasi',
+                'enter_date' => 'Tanggal Masuk',
+                'case' => 'kasus',
+                'room' => 'Ruangan',
+            ]
+        );
         try {
             $prisoner = Prisoner::find($prisoner->id);
             $prisoner->name = $request->name;
@@ -170,7 +201,6 @@ class AdminPrisonerController extends Controller
             $prisoner->save();
 
             return redirect('/back-admin/prisoner')->withStatus('Berhasil mengubah data.');
-
         } catch (\Exception $e) {
             return redirect()->back()->withError($e->getMessage());
         } catch (\Illuminate\Database\QueryException $e) {
@@ -189,9 +219,9 @@ class AdminPrisonerController extends Controller
         try {
             Prisoner::find($prisoner->id)->delete();
             return redirect('/back-admin/prisoner')->withStatus('Berhasil menghapus data.');
-        } catch(\Throwable $e){
+        } catch (\Throwable $e) {
             return redirect()->back()->withError($e->getMessage());
-        } catch(\Illuminate\Database\QueryException $e){
+        } catch (\Illuminate\Database\QueryException $e) {
             return redirect()->back()->withError($e->getMessage());
         }
     }
