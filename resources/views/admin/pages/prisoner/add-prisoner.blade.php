@@ -5,16 +5,16 @@
         <div class="card-header flex flex-row justify-between">
             <h1 class="h6">Tambah Tahanan</h1>
         </div>
-        <div class="p-6 pb-0 mb-0 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
+        {{-- <div class="p-6 pb-0 mb-0 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
           <h6>Import File</h6>
-      </div>
+        </div> --}}
       <hr class="h-px mt-0 bg-transparent bg-gradient-horizontal-dark">
       <form method="POST" enctype="multipart/form-data" action="{{url('/back-admin/prisoner/import')}}">
           @csrf
-          <div class="p-0 overflow-x-auto">
+          <div class="p-0 mt-3 overflow-x-auto">
               <div class="mx-6 mb-4">
                   <label class="text-gray-700 ml-1" for="importFile">Import File CSV : </label>
-                  <input type="file" name="importFile" class="form-input w-full block rounded mt-1 p-2 border-2 @error('importFile') border-red-500 @enderror focus:outline-none border-pink-500" placeholder="Import File CSV" value="{{old('importFile')}}">
+                  <input type="file" name="importFile" class="form-input w-full block rounded mt-1 p-3 border-2 @error('name') border-red-500 @enderror focus:outline-none focus:border-teal-500" placeholder="Import File CSV" value="{{old('importFile')}}">
                   @error('importFile')
                   <span class="pl-1 text-xs text-red-600 text-bold">
                       {{$message}}

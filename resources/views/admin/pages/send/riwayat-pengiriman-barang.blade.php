@@ -4,6 +4,11 @@
 @endsection
 @section('content')
 <div>
+    <div class="mb-3 text-right">
+        <a href="{{url('/back-admin/pengiriman/eksport')}}">
+            <button type="submit" class="bg-teal-500 py-3 px-4 text-white rounded hover:bg-teal-600"><i class="fa fa-plus text-white"></i> Eksport Data</button>
+        </a>
+    </div>
     <div class="card">
         <div class="card-header flex flex-row justify-between">
             <h1 class="h6">List Riwayat Pengiriman Barang</h1>

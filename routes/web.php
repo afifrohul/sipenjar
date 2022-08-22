@@ -51,6 +51,7 @@ Route::group(['middleware' => ['role:admin']], function () {
     //tahanan
     Route::get('/back-admin/prisoner', [AdminPrisonerController::class, 'index']);
     Route::get('/back-admin/prisoner/create', [AdminPrisonerController::class, 'create']);
+    //import tahanan from file
     Route::post('/back-admin/prisoner/store', [AdminPrisonerController::class, 'store']);
     Route::post('/back-admin/prisoner/import', [AdminPrisonerController::class, 'importFile']);
     Route::post('/back-admin/prisoner/edit/{prisoner}', [AdminPrisonerController::class, 'edit']);
@@ -63,6 +64,9 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::post('/back-admin/pengiriman/riwayat/show/{send}', [AdminSendController::class, 'show']);
     Route::post('/back-admin/pengiriman/edit/{send}', [AdminSendController::class, 'edit']);
     Route::put('/back-admin/pengiriman/update/{send}', [AdminSendController::class, 'update']);
+    //export pengiriman to file (with to and from parameter)
+    Route::get('/back-admin/pengiriman/eksport', [AdminSendController::class, 'eksport']);
+    Route::get('/back-admin/pengiriman/download', [AdminSendController::class, 'eksportToExcel']);
 });
 
 
