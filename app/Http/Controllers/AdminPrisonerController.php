@@ -108,8 +108,8 @@ class AdminPrisonerController extends Controller
         // $request->validate([
         //     'importFile' => 'required|mimes:csv,xls,xlsx'
         // ]);
-
-        $file = $request->file('importFile');
+        try{
+            $file = $request->file('importFile');
         $fileName = rand() . $file->getClientOriginalName();
 
         $file->move('files/', $fileName);
@@ -119,11 +119,15 @@ class AdminPrisonerController extends Controller
         // return redirect('prisoner');
         if ($import) {
             //redirect
-            return redirect()->route('AdminPrisonerController.index')->with(['success' => 'Data Berhasil Diimport!']);
+            return redirect('/back-admin/prisoner')->withStatus('Berhasil menambah data.');
         } else {
             //redirect
-            return redirect()->route('AdminPrisonerController.index')->with(['error' => 'Data Gagal Diimport!']);
+            return redirect()->back()->withError('Terjadi kesalahan pada database', $e->getMessage());
         }
+        }catch(\Exception $e){ 
+            return redirect()->back()->withError('Terjadi kesalahan pada sistem', $e->getMessage());
+        }
+        
     }
 
     /**

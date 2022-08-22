@@ -54,10 +54,7 @@ class AdminSendController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -145,4 +142,21 @@ class AdminSendController extends Controller
     {
         //
     }
+
+    public function eksport()
+    {
+        try {
+
+            return view('admin.pages.send.eksport-pengiriman');
+        } catch (\Exception $e) {
+            return redirect()->back()->withError($e->getMessage());
+        } catch (\Illuminate\Database\QueryException $e) {
+            return redirect()->back()->withError('Terjadi kesalahan pada database', $e->getMessage());
+        }
+    }
+
+    public function eksportToExcel($startDate, $endDate)
+	{  
+		return Excel::download(new SendExport($startDate, $endDate), 'rekapPengiriman.xlsx');
+	}
 }
