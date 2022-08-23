@@ -15,7 +15,7 @@ class CreatePrisonersTable extends Migration
     {
         Schema::create('prisoners', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
+            $table->string('name');
             $table->string('no_regis')->unique();
             $table->date('enter_date');
             $table->string('case');
