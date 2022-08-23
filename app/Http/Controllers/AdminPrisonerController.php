@@ -125,7 +125,7 @@ class AdminPrisonerController extends Controller
             return redirect()->back()->withError('Terjadi kesalahan pada database', $e->getMessage());
         }
         }catch(\Exception $e){ 
-            return redirect()->back()->withError('Terjadi kesalahan pada sistem', $e->getMessage());
+            return redirect()->back()->withError( $e->getMessage());
         }
         
     }
