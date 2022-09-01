@@ -14,8 +14,8 @@
             <h1 class="h6">List Admin</h1>
         </div>
         <div class="card-body">
-            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                <table class="min-w-full divide-y divide-gray-200">
+            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg p-4">
+                <table class="min-w-full divide-y divide-gray-200 compact stripe" id="dataTable">
                     <thead class="bg-gray-50">
                         <tr>
                             <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -35,20 +35,20 @@
                     <tbody class="bg-white divide-y divide-gray-200">
                         @foreach ($getAdmin as $item)  
                         <tr>
-                            <td class="px-6 py-4 whitespace-nowrap text-center">
+                            <td class="px-6 py-4 whitespace-nowrap ">
                                 <div class="text-sm text-gray-900">{{$loop->iteration}}</div>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-center">
+                            <td class="px-6 py-4 whitespace-nowrap ">
                                 <div class="text-sm text-gray-900">{{$item->name}}</div>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-center">
+                            <td class="px-6 py-4 whitespace-nowrap ">
                                 <div class="text-sm text-gray-900">{{$item->email}}</div>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-center">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium ">
                                 <form action="{{url('/back-admin/admin/edit',$item->id)}}" method="POST" class="inline">
                                     @csrf
                                     <button type="submit" class="bg-teal-500 h-10 w-10 rounded hover:bg-teal-600"><i class="fa fa-pencil text-white"></i></button>
-                                </form><br><br>
+                                </form>
                                 <form action="{{url('/back-admin/admin/destroy',$item->id)}}" method="POST" class="inline">
                                     @method('delete')
                                     @csrf

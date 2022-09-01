@@ -14,8 +14,8 @@
             <h1 class="h6">List Riwayat Pengiriman Barang</h1>
         </div>
         <div class="card-body">
-            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                <table class="min-w-full divide-y divide-gray-200">
+            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg p-4">
+                <table class="min-w-full divide-y divide-gray-200 compact stripe" id="dataTable">
                     <thead class="bg-gray-50">
                         <tr>
                             <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">

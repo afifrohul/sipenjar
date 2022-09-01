@@ -14,29 +14,29 @@
             <h1 class="h6">List Tahanan</h1>
         </div>
         <div class="card-body">
-            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                <table class="min-w-full divide-y divide-gray-200">
+            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg p-4">
+                <table class="min-w-full divide-y divide-gray-200 compact stripe" id="dataTable">
                     <thead class="bg-gray-50">
                         <tr>
-                            <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th scope="col" class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 No
                             </th>
-                            <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th scope="col" class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Nama 
                             </th>
-                            <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th scope="col" class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 No Registrasi 
                             </th>
-                            <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th scope="col" class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Tanggal Masuk
                             </th>
-                            <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th scope="col" class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Kasus
                             </th>
-                            <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th scope="col" class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Ruangan
                             </th>
-                            <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th scope="col" class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Opsi
                             </th>
                         </tr>
@@ -44,28 +44,28 @@
                     <tbody class="bg-white divide-y divide-gray-200">
                         @foreach ($getPrisoner as $item)  
                         <tr>
-                            <td class="px-6 py-4 whitespace-nowrap text-center">
-                                <div class="text-sm text-gray-900">{{$loop->iteration}}</div>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900 text-center">{{$loop->iteration}}</div>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-center">
-                                <div class="text-sm text-gray-900">{{$item->name}}</div>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900 ">{{Str::limit($item->name, 20)}}</div>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-center">
-                                <div class="text-sm text-gray-900">{{$item->no_regis}}</div>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900 ">{{$item->no_regis}}</div>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-center">
-                                <div class="text-sm text-gray-900">{{$item->enter_date}}</div>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900 ">{{$item->enter_date}}</div>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-center">
-                                <div class="text-sm text-gray-900">{{$item->case}}</div>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900 ">{{Str::limit($item->case, 25)}}</div>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-center">
-                                <div class="text-sm text-gray-900">{{$item->room}}</div>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900 ">{{$item->room}}</div>
                             </td>
-                            {{-- <td class="px-6 py-4 whitespace-nowrap text-center">
+                            {{-- <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="text-sm text-gray-900">{{$item->photo}}</div>
                             </td> --}}
-                            {{-- <td class="px-6 py-4 whitespace-nowrap text-center">
+                            {{-- <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="text-sm text-gray-900">
                                     <img class="h-16 object-cover m-auto" src="{{asset('assets/upload/prisoner/')}}/{{$item->photo}}">
                                 </div>
@@ -74,7 +74,7 @@
                                 <form action="{{url('/back-admin/prisoner/edit',$item->id)}}" method="POST" class="inline">
                                     @csrf
                                     <button type="submit" class="bg-teal-500 h-10 w-10 rounded hover:bg-teal-600"><i class="fa fa-pencil text-white"></i></button>
-                                </form><br><br>
+                                </form>
                                 <form action="{{url('/back-admin/prisoner/destroy',$item->id)}}" method="POST" class="inline">
                                     @method('delete')
                                     @csrf
